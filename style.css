@@ -1,0 +1,331 @@
+body 
+{
+	font-family:verdana, arial, helvetica, sans-serif;
+	background-color: #EEEEEE;
+}
+
+html 
+{
+    font-size: 13px;
+}
+
+hr
+{
+	height: 1px;
+	color: #000000;
+	padding-top: -5px;
+}
+
+#content 
+{
+	width: 770px;
+	margin-left: auto;
+	margin-right: auto;	
+	border: 1px solid #000000;
+	background-color: #FFFFFF;
+}
+
+#header
+{
+	height: 146px;
+	width: 770px;
+	background:url("images/header.jpg");
+	color: #FFFFFF;
+}
+
+#header .title
+{
+	padding: 20px 20px 0px 0px;
+	color: #FFFFFF;
+	font-size: 30px;
+	font-weight: bold;
+	text-align: right;
+}
+
+#header .title  a:link
+{
+	color: #FFFFFF;
+	text-decoration: none;
+}
+
+#header .title a:hover
+{
+	text-decoration: underline;
+}
+
+#header .title a:visited
+{
+	color: #FFFFFF;
+	text-decoration: none;
+}
+
+#navi
+{
+	width: 770px;
+	height: 20px;
+	text-align: right;
+	padding: 0px 0px 0px 0px;
+	background-color: #000000;
+}
+
+#navi ul
+{
+	margin: 0px;
+	list-style-type: none;
+}
+
+#navi li
+{
+	line-height: 20px;
+	float: right;
+	color: #FFFFFF;
+	text-align: right;
+	padding: 0px 5px 0px 5px;
+}
+
+#navi li a:link
+{
+	color: #FFFFFF;
+	text-decoration: none;
+}
+
+#navi li a:visited
+{
+	color: #FFFFFF;
+	text-decoration: none;
+}
+
+#navi li a:hover
+{
+	color: #FF0000;
+	text-decoration: none;
+}
+
+#navipage
+{
+	float: left;
+	padding: 0px 0px 10px 0px;
+	width: 170px;
+	height: 700px;
+}
+
+#navipage ul
+{
+	padding: 20px 0px 10px 20px;
+    margin: 0px;
+	list-style-type: none;
+}
+
+#navipage li
+{
+	line-height: 26px;
+	border-bottom: 1px dashed #CCCCCC;
+	padding: 0px 0px 0px 20px;
+	background:url("./images/resultset_next.png") no-repeat left;
+}
+
+#navipage li a:link
+{
+	color: #000000;
+    text-decoration: none;
+}
+
+#navipage li a:visited
+{
+    color: #000000;
+    text-decoration: none;
+}
+
+#navipage li a:hover
+{
+    text-decoration: underline;
+}
+
+#mainpage
+{
+	float: left;
+	width: 600px;	
+	margin-left: auto;
+	margin-right: auto;
+	padding: 0px 0px 10px 0px;
+}
+
+#footer
+{
+    clear: both;
+    width: 770px;	
+	border-top: 1px dashed #CCCCCC;
+	background-color: #000000;
+}
+
+#footer p
+{
+	font-size: 13px;
+	line-height: 1.5;	
+	text-align: center;
+	margin: 0;
+	padding: 0px 0px 0px 0px;
+	color: #FFFFFF;
+}
+
+#maincontain
+{
+	clear: both;
+	width: 550px;
+	margin-left: auto;
+	margin-right: auto;
+	padding: 20px 25px 10px 25px;
+}
+
+#maincontain p
+{
+	text-indent: 26px;
+}
+
+#maincontain ul
+{
+	padding: 5px 0px 25px 10px;
+    margin: 0px;
+	list-style-type: none;
+}
+
+#maincontain li
+{
+	padding: 2px 0px 0px 20px;
+}
+
+#maincontain li a:link
+{
+	color: #0000FF;
+    text-decoration: none;
+}
+
+#maincontain li a:visited
+{
+    color: #0000FF;
+    text-decoration: none;
+}
+
+#maincontain li a:hover
+{
+    text-decoration: underline;
+}
+
+.member
+{
+	width: 460px;
+	height: 120px;
+	margin: 0px auto 10px auto;
+	border: 1px solid #CCCCCC;	
+}
+
+.member .photo
+{
+	float: left;
+	width: 150px;
+	height: 120px;	
+	text-align: center;
+	line-height: 120px;
+	color: #AAAAAA;	
+	background-color: #EEEEEE;
+	border-right: 1px dashed #AAAAAA;	
+}
+
+.member .name
+{
+	float: left;
+	width: 287px;
+	font-weight: bold;
+	font-size: 15px;
+	text-align: left;
+	margin:  10px 10px 5px 10px;
+	border-bottom: 1px dashed #AAAAAA;	
+}
+
+.member .grade
+{
+	float: left;
+	width: 287px;
+	text-align: left;
+	margin:  2px 10px 5px 10px;
+	border-bottom: 1px dashed #AAAAAA;	
+}
+
+.member .email
+{
+	float: left;
+	width: 287px;
+	text-align: left;
+	margin:  2px 10px 5px 10px;
+	border-bottom: 1px dashed #AAAAAA;	
+	color: #3b79f5;
+}
+
+.member .info
+{
+	float: left;
+	width: 287px;
+	text-align: left;
+	margin:  0px 10px 0px 10px;
+	overflow: hidden;
+}
+
+
+
+.plan
+{
+	width: 548px;
+	margin: 0px auto 10px auto;
+	border: 1px solid #08088c;	
+}
+
+.plan .plan_box
+{
+	background-color: #1c5ee0;
+}
+
+.plan .plan_box1
+{
+	background-color: #9cc8f5;
+}
+
+.plan .plan_box2
+{
+	background-color: #e3f6ff;
+}
+
+.plan_line
+{
+	clear: both;
+	width: 100%;
+	height: 1px;
+	margin: 0px 0px 0px 0px;
+	border-bottom: 1px dashed #08088c;	
+}
+
+.plan_year
+{
+	float: left;
+	width: 80px;
+	text-align: center;
+	line-height: 2.0;
+}
+
+.plan_title
+{
+	float: left;
+	width: 457px;
+	text-align: left;
+	line-height: 2.0;
+	border-left: 1px solid #08088c;
+	padding: 0px 0px 0px 5px;
+}
+
+.plan_budget
+{
+	float: left;
+	width: 93px;
+	text-align: right;
+	line-height: 2.0;
+	padding: 0px 5px 0px 0px;
+}

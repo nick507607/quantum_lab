@@ -1,0 +1,179 @@
+<div id="banner-wrapper">
+<div id="banner" class="container ezmakd"><br>
+
+<h1 id="ezprivacy-makd-程式撰寫須知">EZPrivacy MAKD 程式撰寫須知</h1>
+
+
+
+<h2 id="makd-概述">MAKD 概述</h2>
+
+<p>EZPrivacy 是由本實驗室所研發的資訊安全工具集，其中 MAKD （Mutual Authentication / Key Distribution ）是一個基於雜湊函數的金鑰分配系統。</p>
+
+<p>本金鑰分配系統 MAKD 的主要目的在於，替提供某網路服務的伺服器（server）與此服務的用戶（client）之間暗地約定一把通訊金鑰（session key），這中間必須透過一個認証伺服器（ACS）來認証雙方身份與產生金鑰。</p>
+
+<p>運作流程如下：</p>
+
+
+
+<div class="sequence-diagram"><svg height="709" version="1.1" width="651.1640625" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="overflow: hidden; position: relative; left: -0.5px; top: 0.1875px;"><desc style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">Created with Raphaël 2.1.2</desc><defs style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"><path stroke-linecap="round" d="M5,0 0,2.5 5,5z" id="raphael-marker-block" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></path><marker id="raphael-marker-endblock55-obj1944" markerHeight="5" markerWidth="5" orient="auto" refX="2.5" refY="2.5" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#raphael-marker-block" transform="rotate(180 2.5 2.5) scale(1,1)" stroke-width="1.0000" fill="#000" stroke="none" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></use></marker><marker id="raphael-marker-endblock55-obj1950" markerHeight="5" markerWidth="5" orient="auto" refX="2.5" refY="2.5" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#raphael-marker-block" transform="rotate(180 2.5 2.5) scale(1,1)" stroke-width="1.0000" fill="#000" stroke="none" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></use></marker><marker id="raphael-marker-endblock55-obj1959" markerHeight="5" markerWidth="5" orient="auto" refX="2.5" refY="2.5" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#raphael-marker-block" transform="rotate(180 2.5 2.5) scale(1,1)" stroke-width="1.0000" fill="#000" stroke="none" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></use></marker><marker id="raphael-marker-endblock55-obj1965" markerHeight="5" markerWidth="5" orient="auto" refX="2.5" refY="2.5" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#raphael-marker-block" transform="rotate(180 2.5 2.5) scale(1,1)" stroke-width="1.0000" fill="#000" stroke="none" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></use></marker></defs><rect x="53.6640625" y="20" width="56.78125" height="39" rx="0" ry="0" fill="none" stroke="#000000" stroke-width="2" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></rect><rect x="63.65625" y="30" width="36.78125" height="19" rx="0" ry="0" fill="#ffffff" stroke="none" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></rect><text x="82.0546875" y="39.5" text-anchor="middle" font-family="Andale Mono, monospace" font-size="16px" stroke="none" fill="#000000" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: middle; font-family: 'Andale Mono', monospace; font-size: 16px;"><tspan dy="5.5" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">Client</tspan></text><rect x="53.6640625" y="650" width="56.78125" height="39" rx="0" ry="0" fill="none" stroke="#000000" stroke-width="2" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></rect><rect x="63.65625" y="660" width="36.78125" height="19" rx="0" ry="0" fill="#ffffff" stroke="none" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></rect><text x="82.0546875" y="669.5" text-anchor="middle" font-family="Andale Mono, monospace" font-size="16px" stroke="none" fill="#000000" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: middle; font-family: 'Andale Mono', monospace; font-size: 16px;"><tspan dy="5.5" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">Client</tspan></text><path fill="none" stroke="#000000" d="M82.0546875,59L82.0546875,650" stroke-width="2" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></path><rect x="229.25" y="20" width="60.296875" height="39" rx="0" ry="0" fill="none" stroke="#000000" stroke-width="2" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></rect><rect x="239.234375" y="30" width="40.296875" height="19" rx="0" ry="0" fill="#ffffff" stroke="none" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></rect><text x="259.3984375" y="39.5" text-anchor="middle" font-family="Andale Mono, monospace" font-size="16px" stroke="none" fill="#000000" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: middle; font-family: 'Andale Mono', monospace; font-size: 16px;"><tspan dy="5.5" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">Server</tspan></text><rect x="229.25" y="650" width="60.296875" height="39" rx="0" ry="0" fill="none" stroke="#000000" stroke-width="2" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></rect><rect x="239.234375" y="660" width="40.296875" height="19" rx="0" ry="0" fill="#ffffff" stroke="none" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></rect><text x="259.3984375" y="669.5" text-anchor="middle" font-family="Andale Mono, monospace" font-size="16px" stroke="none" fill="#000000" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: middle; font-family: 'Andale Mono', monospace; font-size: 16px;"><tspan dy="5.5" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">Server</tspan></text><path fill="none" stroke="#000000" d="M259.3984375,59L259.3984375,650" stroke-width="2" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></path><rect x="449.453125" y="20" width="44.734375" height="39" rx="0" ry="0" fill="none" stroke="#000000" stroke-width="2" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></rect><rect x="459.4375" y="30" width="24.734375" height="19" rx="0" ry="0" fill="#ffffff" stroke="none" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></rect><text x="471.8203125" y="39.5" text-anchor="middle" font-family="Andale Mono, monospace" font-size="16px" stroke="none" fill="#000000" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: middle; font-family: 'Andale Mono', monospace; font-size: 16px;"><tspan dy="5.5" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">ACS</tspan></text><rect x="449.453125" y="650" width="44.734375" height="39" rx="0" ry="0" fill="none" stroke="#000000" stroke-width="2" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></rect><rect x="459.4375" y="660" width="24.734375" height="19" rx="0" ry="0" fill="#ffffff" stroke="none" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></rect><text x="471.8203125" y="669.5" text-anchor="middle" font-family="Andale Mono, monospace" font-size="16px" stroke="none" fill="#000000" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: middle; font-family: 'Andale Mono', monospace; font-size: 16px;"><tspan dy="5.5" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">ACS</tspan></text><path fill="none" stroke="#000000" d="M471.8203125,59L471.8203125,650" stroke-width="2" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></path><rect x="10" y="79" width="144.109375" height="47" rx="0" ry="0" fill="none" stroke="#000000" stroke-width="2" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></rect><rect x="14.984375" y="84" width="134.109375" height="37" rx="0" ry="0" fill="#ffffff" stroke="none" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></rect><text x="82.0546875" y="102.5" text-anchor="middle" font-family="Andale Mono, monospace" font-size="16px" stroke="none" fill="#000000" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: middle; font-family: 'Andale Mono', monospace; font-size: 16px;"><tspan dy="-3.5" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">製造某個只有 Client </tspan><tspan dy="18" x="82.0546875" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">能夠產生的秘密: S_c</tspan></text><rect x="92.046875" y="141.5" width="157.34375" height="19" rx="0" ry="0" fill="#ffffff" stroke="none" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></rect><text x="170.7265625" y="151" text-anchor="middle" font-family="Andale Mono, monospace" font-size="16px" stroke="none" fill="#000000" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: middle; font-family: 'Andale Mono', monospace; font-size: 16px;"><tspan dy="5.5" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">_　　　　S_c　　　　_</tspan></text><path fill="none" stroke="#000000" d="M82.0546875,165C82.0546875,165,225.5940377470106,165,254.40003039912062,165" stroke-width="2" marker-end="url(#raphael-marker-endblock55-obj1944)" stroke-dasharray="0" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></path><rect x="186.21875" y="185" width="146.359375" height="47" rx="0" ry="0" fill="none" stroke="#000000" stroke-width="2" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></rect><rect x="191.203125" y="190" width="136.359375" height="37" rx="0" ry="0" fill="#ffffff" stroke="none" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></rect><text x="259.3984375" y="208.5" text-anchor="middle" font-family="Andale Mono, monospace" font-size="16px" stroke="none" fill="#000000" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: middle; font-family: 'Andale Mono', monospace; font-size: 16px;"><tspan dy="-3.5" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">製造某個只有 Server </tspan><tspan dy="18" x="259.3984375" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">能夠產生的秘密: S_s</tspan></text><rect x="269.390625" y="247.5" width="192.421875" height="19" rx="0" ry="0" fill="#ffffff" stroke="none" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></rect><text x="365.609375" y="257" text-anchor="middle" font-family="Andale Mono, monospace" font-size="16px" stroke="none" fill="#000000" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: middle; font-family: 'Andale Mono', monospace; font-size: 16px;"><tspan dy="5.5" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">_　　　　S_c || S_s　　　　_</tspan></text><path fill="none" stroke="#000000" d="M259.3984375,271C259.3984375,271,434.752321068896,271,466.8177651101809,271" stroke-width="2" marker-end="url(#raphael-marker-endblock55-obj1950)" stroke-dasharray="0" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></path><rect x="359.8359375" y="291" width="223.96875" height="47" rx="0" ry="0" fill="none" stroke="#000000" stroke-width="2" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></rect><rect x="364.828125" y="296" width="213.96875" height="37" rx="0" ry="0" fill="#ffffff" stroke="none" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></rect><text x="471.8203125" y="314.5" text-anchor="middle" font-family="Andale Mono, monospace" font-size="16px" stroke="none" fill="#000000" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: middle; font-family: 'Andale Mono', monospace; font-size: 16px;"><tspan dy="-3.5" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">驗證 Client 與 Server 的身份 </tspan><tspan dy="18" x="471.8203125" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"> 並為兩方產生一把 session key SK</tspan></text><rect x="354.84375" y="358" width="233.953125" height="47" rx="0" ry="0" fill="none" stroke="#000000" stroke-width="2" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></rect><rect x="359.828125" y="363" width="223.953125" height="37" rx="0" ry="0" fill="#ffffff" stroke="none" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></rect><text x="471.8203125" y="381.5" text-anchor="middle" font-family="Andale Mono, monospace" font-size="16px" stroke="none" fill="#000000" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: middle; font-family: 'Andale Mono', monospace; font-size: 16px;"><tspan dy="-3.5" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">將 K 的隱藏在只有 Server 與 Client </tspan><tspan dy="18" x="471.8203125" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"> 能解出的密文: S_s2 與 S_c2 之中</tspan></text><rect x="329.421875" y="420.5" width="72.34375" height="19" rx="0" ry="0" fill="#ffffff" stroke="none" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></rect><text x="365.609375" y="430" text-anchor="middle" font-family="Andale Mono, monospace" font-size="16px" stroke="none" fill="#000000" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: middle; font-family: 'Andale Mono', monospace; font-size: 16px;"><tspan dy="5.5" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">S_s2 || S_c2</tspan></text><path fill="none" stroke="#000000" d="M471.8203125,444C471.8203125,444,296.466428931104,444,264.4009848898191,444" stroke-width="2" marker-end="url(#raphael-marker-endblock55-obj1959)" stroke-dasharray="0" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></path><rect x="196.8828125" y="464" width="125.03125" height="29" rx="0" ry="0" fill="none" stroke="#000000" stroke-width="2" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></rect><rect x="201.875" y="469" width="115.03125" height="19" rx="0" ry="0" fill="#ffffff" stroke="none" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></rect><text x="259.3984375" y="478.5" text-anchor="middle" font-family="Andale Mono, monospace" font-size="16px" stroke="none" fill="#000000" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: middle; font-family: 'Andale Mono', monospace; font-size: 16px;"><tspan dy="5.5" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">透過 S_s2 解出 SK</tspan></text><rect x="155.8125" y="508.5" width="29.796875" height="19" rx="0" ry="0" fill="#ffffff" stroke="none" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></rect><text x="170.7265625" y="518" text-anchor="middle" font-family="Andale Mono, monospace" font-size="16px" stroke="none" fill="#000000" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: middle; font-family: 'Andale Mono', monospace; font-size: 16px;"><tspan dy="5.5" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">S_c2</tspan></text><path fill="none" stroke="#000000" d="M259.3984375,532C259.3984375,532,115.85908725298941,532,87.05309460087938,532" stroke-width="2" marker-end="url(#raphael-marker-endblock55-obj1965)" stroke-dasharray="0" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></path><rect x="19.265625" y="552" width="125.578125" height="29" rx="0" ry="0" fill="none" stroke="#000000" stroke-width="2" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></rect><rect x="24.25" y="557" width="115.578125" height="19" rx="0" ry="0" fill="#ffffff" stroke="none" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></rect><text x="82.0546875" y="566.5" text-anchor="middle" font-family="Andale Mono, monospace" font-size="16px" stroke="none" fill="#000000" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: middle; font-family: 'Andale Mono', monospace; font-size: 16px;"><tspan dy="5.5" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">透過 S_c2 解出 SK</tspan></text><rect x="72.0546875" y="601" width="197.34375" height="29" rx="0" ry="0" fill="none" stroke="#000000" stroke-width="2" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></rect><rect x="110.84375" y="606" width="119.734375" height="19" rx="0" ry="0" fill="#ffffff" stroke="none" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></rect><text x="170.7265625" y="615.5" text-anchor="middle" font-family="Andale Mono, monospace" font-size="16px" stroke="none" fill="#000000" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: middle; font-family: 'Andale Mono', monospace; font-size: 16px;"><tspan dy="5.5" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">利用金鑰 K 來通訊</tspan></text></svg></div>
+
+<p>ACS 伺服器是架設在本實驗室的。撰寫 Client 與 Server 的開發者只需要呼叫 Java 套件庫 ezprivacy.jar 中的 API ，即可自動執行完上述流程並取得金鑰 SK 。</p>
+
+<blockquote>
+  <p>提醒： <br>
+  MAKD 協定的流程總是由 Client 所觸發的</p>
+</blockquote>
+
+<p>了解 MAKD 的運作模式，現在可以開始來使用 EZPrivacy 了。</p>
+
+<hr>
+
+<h3 id="目錄">目錄</h3>
+
+<p><div class="toc">
+<ul>
+<li><a href="#ezprivacy-makd-程式撰寫須知">EZPrivacy MAKD 程式撰寫須知</a><ul>
+<li><a href="#makd-概述">MAKD 概述</a><ul>
+<li><a href="#目錄">目錄</a></li>
+</ul>
+</li>
+<li><a href="#第一步註冊並下載-profile">第一步：註冊並下載 Profile</a></li>
+<li><a href="#第二步安裝-java-並導入-ezprivacyjar">第二步：安裝 Java 並導入 ezprivacy.jar</a><ul>
+<li><a href="#安裝-java-8">安裝 Java 8</a></li>
+<li><a href="#下載-ezprivacyzip">下載 ezprivacy.zip</a></li>
+</ul>
+</li>
+<li><a href="#第三步使用-api">第三步：使用 API</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</p>
+
+<hr>
+
+
+
+<h2 id="第一步註冊並下載-profile">第一步：註冊並下載 Profile</h2>
+
+<p>要使用 MAKD，必須要有一把與 ACS 預先約定好的金鑰 （pre-shared Key, <script type="math/tex" id="MathJax-Element-10">PK</script>）。因此我們必須先向 ACS 註冊並取得 PK。</p>
+
+<p>請到以下頁面填入信箱並註冊：<a href="http://140.116.247.10/registration/">http://140.116.247.10/registration/</a></p>
+
+<p>註冊後會寄送一個 newprofile.card 的檔案到您的信箱，檔案中包含方才註冊的序號 ID 、PK、簽章用金鑰… 等資訊，並以方才頁面中輸入的密碼來加密。往後此檔案與內含的資訊稱為 EZCard 或 Profile。</p>
+
+<blockquote>
+  <p><em>本服務並不會收集有關於您信箱或是身份的任何資訊。填入的信箱地址僅作為寄送 PK 之用途</em></p>
+  
+  <p><em>本註冊過程目前僅供實驗用，並非完全安全的，因為傳送 password 過程並未透過 HTTPS 協定</em></p>
+</blockquote>
+
+<p>註冊後便可以至信箱收信，下載 EZCard</p>
+
+<h2 id="第二步安裝-java-並導入-ezprivacyjar">第二步：安裝 Java 並導入 ezprivacy.jar</h2>
+
+
+
+<h3 id="安裝-java-8">安裝 Java 8</h3>
+
+<p>本套件的編譯環境是 Java 8，因此各位必須安裝 <a href="http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html">JDK 8</a> 。</p>
+
+<blockquote>
+  <p><em>除非是作為除錯之用，否則 Java 一向不鼓勵使用舊版 JDK 來開發程式。因此如果您是原本使用 JDK 7 作為開發環境的使用者也請安裝 JDK 8 。</em></p>
+</blockquote>
+
+<p>對於 Windows 的使用者，新版的 JDK 在安裝後不需要手動設定環境變數 path。在安裝 JDK 8 之後 path 會指向 <code>C:\ProgramData\Oracle\Java\javapath</code>內的捷徑。</p>
+
+<p>對於使用 Linux 的同學，如果系統預設使用 Open JDK 7，則可以安裝 Oracle JDK 8 或是 Open JDK 8 之後使用 <code>update-alternatives --config javac</code>  等指令來調整預設 <code>javac</code> 或是 <code>java</code> 程式的位置。</p>
+
+
+
+<h3 id="下載-ezprivacyzip">下載 ezprivacy.zip</h3>
+
+<p>請至 <a href="http://140.116.247.10/ezprivacy/">http://140.116.247.10/ezprivacy/</a> 下載最新版本的 ezprivacy.zip 範例檔案。</p>
+
+<p>解壓縮後如下：</p>
+
+<blockquote>
+  <p>bin/ <br>
+  lib/ <br>
+  acsconf.ini <br>
+  AuthSocketExampleServer.java <br>
+  AuthSocketExampleClient.java <br>
+  compile.sh (.bat) <br>
+  runServer.sh (.bat) <br>
+  runClient.sh (.bat)</p>
+</blockquote>
+
+<p>對於使用 Eclipse 作為開發環境的同學，可將  ./lib 內的 netty.jar 與 ezprivacy.jar 複製到專案目錄的 lib/ 資料夾下，並在 Eclipse 以下列方法加入套件。</p>
+
+<blockquote>
+  <p>專案上右鍵 &gt; Refresh <br>
+  專案上右鍵 &gt; Properties &gt; Java Build Path &gt; Add JARs</p>
+</blockquote>
+
+<p>acsconf.ini 是可有可無的檔案，用來設定與 ACS 的連線。如果 ezprivacy.jar 找不到這個檔案，便會使用預設設定。</p>
+
+<p>另外檔案內的 shell script 是提供給 linux command line 之下編譯的同學參考用的。執行 runServer.sh 再執行 runClient.sh 便可執行範例。使用 Windows 開發的同學請使用 *.bat 的版本。</p>
+
+<h2 id="第三步使用-api">第三步：使用 API</h2>
+
+<p>接下來的說明，都會按照範例程式</p>
+
+<blockquote>
+  <p>AuthSocketExampleClient.java <br>
+  AuthSocketExampleServer.java</p>
+</blockquote>
+
+<p>兩個檔案中程式碼撰寫的順序</p>
+
+<h3 id="client-端程式">Client 端程式</h3>
+
+<h4 id="載入-ezcard">載入 EZCard</h4>
+
+<p>要執行 MAKD，首先要先載入方才註冊的 EZCard：</p>
+
+
+
+<pre class="prettyprint"><code class=" hljs fix"><span class="hljs-attribute">EnhancedProfileManager profile </span>=<span class="hljs-string"> EZCardLoader.loadEnhancedProfile(card, passwd);</span></code></pre>
+
+<p>EZCardLoader.loadEnhancedProfile 函式會將 EZCard 載入為 EnhancedProfileManager 物件。呼叫此函數時必須傳入此 Card 的正確  password，否則待會執行 MAKD 會傳回錯誤。 </p>
+
+<blockquote>
+  <p>關於 EnhancedProfileManager 類別，詳細的 API 可以參考 javadoc: <a href="http://140.116.247.10/ezprivacy/">http://140.116.247.10/ezprivacy/</a></p>
+</blockquote>
+
+<h4 id="使用-authsocket-類別">使用 AuthSocket 類別</h4>
+
+<p>考慮到許多同學可能沒有撰寫網路程式或是 socket 的經驗， MAKD 協定執行時所用的 socket 也以 IOStream 的方式提供給同學傳輸一般的資料，我們將此功能一併包裝為 AuthSocketClient/Server 類別。</p>
+
+<p>AuthSocketClient 物件的初始化必須傳入方才載入的 EnhanceProfileManager 物件，接著便可以呼叫以下的功能：</p>
+
+
+
+<pre class="prettyprint"><code class=" hljs axapta"><span class="hljs-keyword">client</span>.connect(...) <span class="hljs-comment">// 連結到某個 Server 所監聽的 port</span>
+<span class="hljs-keyword">client</span>.doKeyDistribution() <span class="hljs-comment">// 執行 MAKD</span>
+<span class="hljs-keyword">client</span>.doRapidAuthentication() <span class="hljs-comment">// RA protocol：進行 Client 與Server的 Mutual Authentication。</span>
+<span class="hljs-keyword">client</span>.getOutputStream() <span class="hljs-comment">// 取得此連線的 OutputStream 以從 socket 讀取資料</span>
+<span class="hljs-keyword">client</span>.getInputStream() <span class="hljs-comment">// 取得此連線的 InputStream 以向 socket 寫入資料</span></code></pre>
+
+<blockquote>
+  <p>提醒： <br>
+  1. 請依照 <strong>先MAKD，後RA</strong> 的順序執行。RA 是個基於 MAKD 回傳的 Session Key 的協定。 <br>
+  2. 關於 AuthSocketClient 類別的完整 API，請參考 <a href="http://140.116.247.10/exprivacy">http://140.116.247.10/exprivacy</a></p>
+</blockquote>
+
+<h4 id="注意事項">注意事項</h4>
+
+<p>本 MAKD 協定為了符合強匿名性質，因此每次 MAKD 之後 EnhancedProfileManager 的內容都會改變，必須將它存回 EZCard 之中。</p>
+
+<pre class="prettyprint"><code class=" hljs avrasm">EZCardLoader<span class="hljs-preprocessor">.saveEnhancedProfile</span>(enhanced_profile, passwd)</code></pre>
+
+<p>如果執行之後沒有回存，將會導致下次 MAKA 執行的失敗。除此之外，同時使用同一個 profile 來執行多個 MAKA 一樣會失敗。</p>
+
+<h4 id="例外處理">例外處理</h4>
+
+<p>以下列出</p>
+
+</div>
+</div>

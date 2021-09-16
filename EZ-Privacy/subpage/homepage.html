@@ -1,0 +1,46 @@
+<div id="banner-wrapper">
+<div id="banner" class="container">
+	<br>
+	<p>EZ-Privacy 系統是 "成功大學資訊工程所 量子密碼與資訊安全實驗室" 與 "成功大學計算機網路中心" 所研發的一個金鑰分配系統。<br>
+		一般在網路上使用加密通道（private channel）傳輸資料時，會需要使用同一把金鑰來加密。<br>
+		如何在加密通道建立之前就約定好一把共同的金鑰(key)，是密碼學的一大課題。當今常用的作法是使用公鑰加密法來約定金鑰，但公鑰加密法的缺點除了運算速度較慢之外，在量子電腦理論漸驅成熟的未來亦有容易被破解的風險，EZprivacy 於是應運而生。</p>
+	
+	<div class="column1">
+		<div class="title">
+			<h2>雲端認証伺服器</h2>
+		</div>
+		<p>EZprivacy 系統使用雲端認証伺服器（ACS, Authentication Cloud Server）來為通訊雙方產生金鑰，並安全地傳送給通訊雙方。</p>
+	</div>
+	<div class="column2">
+		<div class="title">
+			<h2>運作方式</h2>
+		</div>
+		<p>當某兩台裝置需要做安全通訊時，則透過proxy指派其中一個ACS，來為這兩台裝置做MAKA(或MAKD)取得Session key，則這兩台裝置即可做安全通訊。</p>
+	</div>
+	<div class="column3">
+		<div class="title">
+			<h2>資料庫管理</h2>
+		</div>
+		<p>在眾多裝置彼此之間做安全通訊時，key的管理、儲存變得格外的重要，於是乎我們採用Hadoop(H-Base)來做為我們的資料庫。</p>
+	</div>
+	<div class="column4">
+		<div class="title">
+			<h2>開放原始碼</h2>
+		</div>
+		<p>整個API是開源的狀態，可以依自己的需求調整功能，但是基本的核心屬於成大計網中心與成大資工系管理。</p>
+	</div>
+	<br>
+	<h1>Want to join us?</h1>
+	<div>
+		<div id="api">
+			<a href="http://140.116.247.10/ezprivacy/" id="api_button" target="_blank">Download API now!</a>
+		</div>
+		<br>
+		<div id="api">
+			<a href="http://140.116.247.10/ezprivacy/tutorial/" id="api_button" target="_blank">Tutorial</a>
+		</div>
+	</div>
+	<br>
+	<br>
+</div>
+</div>

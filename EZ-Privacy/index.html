@@ -1,0 +1,91 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>EZ Privacy</title>
+		<link href="css/main.css" rel="stylesheet" type="text/css" media="all" />
+		<link href="css/members.css" rel="stylesheet" type="text/css" media="all" />
+		<link href="css/acs.css" rel="stylesheet" type="text/css" media="all" />
+		<script src="./lib/jquery-2.1.4.min.js" type="text/javascript"></script>
+		<script type="text/javascript">
+			$(function(){
+				$("ul.navigation > li:has(ul) > a").append('<div class="arrow-bottom"></div>');
+				$("ul.navigation > li ul li:has(ul) > a").append('<div class="arrow-right"></div>');
+			});
+		</script>
+		<script type="text/javascript">
+			//抓網頁
+			var url;
+			function getpage(url){
+				$.get(url, function(result){
+					$("#content").html(result);
+				});
+			}
+			//換標籤顏色
+			var ex_page = "homepage";
+			var cur_page;
+			function current(cur_page){
+				if(ex_page != cur_page){
+					var para = document.getElementById(ex_page).className = "";
+					var para = document.getElementById(cur_page).className = "current_page_item";
+					ex_page = cur_page;
+				}
+			}
+			
+			var temp_page;
+			function mouseon(temp_page){
+				if(temp_page != cur_page){
+					var para = document.getElementById(cur_page).className = "";
+					var para = document.getElementById(temp_page).className = "current_page_item";
+				}
+			}
+			
+			function mouseleace(temp_page){
+				if(temp_page != cur_page){
+					var para = document.getElementById(temp_page).className = "";
+					var para = document.getElementById(cur_page).className = "current_page_item";
+				}
+			}
+			
+			function action(url, cur_page){
+				getpage(url);
+				current(cur_page);
+			}
+			
+		</script>
+	</head>
+	<body onload="getpage('subpage/homepage.html')">
+		<div id="header-wrapper">
+			<div id="header" class="container">
+				<div id="logo">
+					<h1><a href="./index.html">EZ Privacy</a></h1>
+				</div>
+				<div id="menu">
+					<ul class="navigation">
+						<li id="homepage" class="current_page_item" onclick="action('subpage/homepage.html', 'homepage')"><a href="#" accesskey="1" title="">Homepage</a></li>
+						<li><a href="#" accesskey="2" title="">About</a>
+							<ul class="second">
+								<li><a href="http://140.116.247.10/ezprivacy/tutorial/" target="_blank">EZ-Privacy Tutorial</a></li>
+								<li id="about_mem" onclick="action('subpage/members.html', 'about_mem')"><a href="#">Members</a></li>
+							</ul>
+						</li>
+						<li><a href="#" accesskey="3" title="">Services</a>
+							<ul class="second">
+								<li><a href="http://140.116.247.10/ezprivacy/" target="_blank">EZ-Privacy API</a></li>
+								<li id="acs" onclick="action('subpage/acs.html', 'acs')"><a href="#">ACS</a></li>
+								<li><a href="http://140.116.247.10/registration/" target="_blank">ACS Register</a></li>
+								<li id="ezp_care" onclick="current('ezp_care')"><a href="#">EZP-Care</a></li>
+								<li id="uims" onclick="current('uims')"><a href="#">UIMS</a></li>
+								<li><a href="https://rcip.no-ip.org:32443/login.jsp" target="_blank">Cloud Storage</a></li>
+							</ul>
+						</li>
+						<li id="contact" onclick="action('subpage/contact.html', 'contact')"><a href="#" accesskey="4" title="">Contact Us</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div id="content">
+
+		</div>
+	</body>
+</html>

@@ -1,0 +1,26 @@
+#acspage{
+	background: rgba(100%,100%,100%,0.6);
+	overflow: hidden;
+	width: 70%;
+	border-radius: 20px;
+	padding: 0px 100px;
+	color: rgba(255,255,255,0.7);
+}
+
+#acspage h1, a, p, h2{
+	color: #000;
+}
+
+#acspage p{
+	color: #000;
+	font-size: 18px;
+}
+
+#acsapi{	
+	text-align: center;
+}
+
+#system{
+	content: url(../images/EZP.jpg);
+	width: 100%;
+}
